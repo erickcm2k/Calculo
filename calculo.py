@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 datos = np.arange(0, 360)
 datos = np.radians(datos)
-datos = np.sin(999*datos)
+datos = np.sin(3*datos)
 
 plt.plot(datos,"b") #usando b-- se imprime seccionada la gráfica
 plt.show() #función que imprime la gráfica
