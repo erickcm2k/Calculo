@@ -2,7 +2,7 @@
 
 Graficador básico de funciones
 
-Requisitos previos:
+**Requisitos previos:**
 
 Instalar matplotlibt y numpy
 
