@@ -10,8 +10,8 @@ sudo apt install python3-pip
 
 pip3 --version
 
-sudo pip install numpy
+sudo pip3 install numpy
 
-sudo pip install sympy
+sudo pip3 install sympy
 
-sudo pip install scipy
+sudo pip3 install scipy
