@@ -1,6 +1,6 @@
 # Calculo
 
-Graficador básico de funciones
+Sencillo programa que recibe una función y calcula su derivada e integral
 
 **Requisitos previos:**
 
