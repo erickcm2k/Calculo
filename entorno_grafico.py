@@ -87,9 +87,11 @@ def main():
                                 '\nfuncion\tescritura'+
                                 '\ncos(x)\tcos(x)\nsen(x)\tsin(x)\ntan(x)\ttan(x)\nsec(x)\tsec(x)\ncsc(x)\tcsc(x)\nctg(x)\tcot(x)'+
                                 '\ncosh(x)\tcosh(x)\nsenh(x)\tsinh(x)\ntanh(x)\ttanh(x)\nsech(x)\tsech(x)\ncsch(x)\tcsch(x)\nctgh(x)\tcoth(x)\n'+
-                                'Faltan las inversas\n'+
+                                'arcosen(x)\tasin(x)\narcosen(x)\tacos(x)\narcotan(x)\tatan(x)\narcosec(x)\tasec(x)\narcocsc(x)\tacsc(x)\narcoctg(x)\tacot(x)\n'+
+                                'arcosenh(x)\tasinh(x)\narcosenh(x)\tacosh(x)\narcotanh(x)\tatanh(x)\narcosech(x)\tasech(x)\narcocsch(x)\tacsch(x)\narcoctgh(x)\tacoth(x)\n'+
                                 'e^x\texp(x)\nlog(x)\tlog(x) ó ln(x)\n x^n\tx**n\nnx\tn*x\n √x\tsqrt(x)\n'+
-                                'En caso de que obtenga como resultado Integrate(F(x))), indica que su derivada o integral no puede ser computada por este software')
+                                'Un ejemplo de esto es:\texp(cos(x)**4)\n'+
+                                'En caso de que obtenga como resultado Integrate(F(x))), indica que su derivada o \nintegral no puede ser computada por este software')
     global Lbl_Resultado
     Lbl_Resultado=graficos.QLabel('Funcion resultante')
     Completar_Layouts()
