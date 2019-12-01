@@ -1,3 +1,4 @@
+import subprocess, sys
 import PyQt5.QtWidgets as graficos
 import sympy as sp
 global Layout1
@@ -30,12 +31,23 @@ def Integrar():
     except:
         Lbl_Resultado.setText('Funcion invalida')
 def Limpiar():
-    Qle_Funcion.setText('Aqui va la funcion a derivar o integrar')
+    Qle_Funcion.setText('')
     Lbl_Resultado.setText('Resultado')
 
-def Mostrar():
-    Ventana2.setVisible(True)
+def AbrirAyuda():
 
+    if sys.platform == 'linux':
+        #Linux detectado
+        subprocess.call(["xdg-open", "ayuda.pdf"])
+    elif sys.platform == 'darwin':
+        #MacOSx detectado
+        subprocess.call(["open", "ayuda.pdf"])
+    elif sys.platform.startswith('win'):
+        #Windows detectado
+        subprocess.call(["start", "ayuda.pdf"])
+
+def Mostrar():
+    AbrirAyuda()
 def Ocultar():
     Ventana2.setVisible(False)
 
@@ -82,12 +94,12 @@ def main():
     global Qle_Funcion
     Qle_Funcion=graficos.QLineEdit('Aqui va la funcion')
     global Lbl_ayuda
-    Lbl_ayuda=graficos.QLabel('La derivada esta dada con repecto a x'+
-                                '\nLas funciones aceptadas son:'+
-                                '\nfuncion\tescritura'+
-                                '\ncos(x)\tcos(x)\nsen(x)\tsin(x)\ntan(x)\ttan(x)\nsec(x)\tsec(x)\ncsc(x)\tcsc(x)\nctg(x)\tcot(x)'+
+    Lbl_ayuda=graficos.QLabel('\n\t\t¿Cómo ingresar datos a la calculadora?\n'+
+                                '\n\t\tLas funciones aceptadas son:\n'+
+                                '\nForma Convencional:\tForma que puede entender la calculadora:'+
+                                '\ncoseno\tcos(x)\nseno\tsin(x)\ntangente\ttan(x)\nsecante\tsec(x)\ncosecante\tcsc(x)\ncotangente\tcot(x)'+
+                                '\narcocoseno\tacos(x)\narcoseno\tasin(x)\narcotangente\tatan(x)\narcosecante\tasec(x)\narcocosecante\tacsc(x)\narcocotangente\tacot(x)'+
                                 '\ncosh(x)\tcosh(x)\nsenh(x)\tsinh(x)\ntanh(x)\ttanh(x)\nsech(x)\tsech(x)\ncsch(x)\tcsch(x)\nctgh(x)\tcoth(x)\n'+
-                                'Faltan las inversas\n'+
                                 'e^x\texp(x)\nlog(x)\tlog(x) ó ln(x)\n x^n\tx**n\nnx\tn*x\n √x\tsqrt(x)\n'+
                                 'En caso de que obtenga como resultado Integrate(F(x))), indica que su derivada o integral no puede ser computada por este software')
     global Lbl_Resultado
