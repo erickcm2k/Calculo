@@ -103,7 +103,7 @@ def main():
     global Btn_ocultar
     Btn_ocultar=graficos.QPushButton('Cerrar')
     global Qle_Funcion
-    Qle_Funcion=graficos.QLineEdit('Aqui va la funcion')
+    Qle_Funcion=graficos.QLineEdit('')
     global Lbl_ayuda
     Lbl_ayuda=graficos.QLabel('\n\t\t¿Cómo ingresar datos a la calculadora?\n'+
                                 '\n\t\tLas funciones aceptadas son:\n'+
