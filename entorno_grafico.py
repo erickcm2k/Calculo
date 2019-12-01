@@ -1,4 +1,5 @@
 import subprocess, sys
+import webbrowser
 import PyQt5.QtWidgets as graficos
 import sympy as sp
 global Layout1
@@ -35,19 +36,29 @@ def Limpiar():
     Lbl_Resultado.setText('Resultado')
 
 def AbrirAyuda():
-
-    if sys.platform == 'linux':
-        #Linux detectado
-        subprocess.call(["xdg-open", "ayuda.pdf"])
-    elif sys.platform == 'darwin':
-        #MacOSx detectado
-        subprocess.call(["open", "ayuda.pdf"])
-    elif sys.platform.startswith('win'):
-        #Windows detectado
-        subprocess.call(["start", "ayuda.pdf"])
+    try:
+        if sys.platform == 'linux':
+            #Linux detectado
+            subprocess.call(["xdg-open", "ayuda.pdf"])
+        elif sys.platform == 'darwin':
+            #MacOSx detectado
+            subprocess.call(["open", "ayuda.pdf"])
+        elif sys.platform.startswith('win'):
+            #Windows detectado
+            try:
+                import win32api
+                user = win32api.GetUserName()
+                B="C:/Users/"+str(user)+"/Desktop/ayuda.pdf"
+                print(B)
+                subprocess.call(["start", str(B)])
+            except:
+                Ventana2.setVisible(True)
+    except:
+        Ventana2.setVisible(True)
 
 def Mostrar():
     AbrirAyuda()
+
 def Ocultar():
     Ventana2.setVisible(False)
 
