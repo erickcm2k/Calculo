@@ -45,15 +45,11 @@ def AbrirAyuda():
             subprocess.call(["open", "ayuda.pdf"])
         elif sys.platform.startswith('win'):
             #Windows detectado
-            try:
-                import win32api
-                user = win32api.GetUserName()
-                B="C:/Users/"+str(user)+"/Desktop/ayuda.pdf"
-                print(B)
-                subprocess.call(["start", str(B)])
-            except:
-                Ventana2.setVisible(True)
+            import os
+            os.startfile("ayuda.pdf")
+            
     except:
+        print("resulto esto")
         Ventana2.setVisible(True)
 
 def Mostrar():
