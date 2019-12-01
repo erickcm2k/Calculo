@@ -4,27 +4,34 @@ global Layout1
 global Layout2
 global Btn_derivar
 global Btn_integrar
-global Btn_Graficar
+global Btn_Limpiar
 global Btn_ayuda
 global Btn_ocultar
 global Qle_Funcion
-global Lbl_Grafica
 global Lbl_ayuda
 global Lbl_Resultado
 global Ventana2
 
 def Derivar():
-    Cadena=str(Qle_Funcion.text())
-    x=sp.Symbol('x')
-    Res=sp.diff(Cadena,x)
-    Lbl_Resultado.setText(str(Res))
+    try:
+        Cadena=str(Qle_Funcion.text())
+        x=sp.Symbol('x')
+        Res=sp.diff(Cadena,x)
+        Lbl_Resultado.setText(str(Res))
+    except:
+        Lbl_Resultado.setText('Funcion invalida')
 
 def Integrar():
-    Cadena=str(Qle_Funcion.text())
-    x=sp.Symbol('x')
-    Res=sp.integrate(Cadena,x)
-    Lbl_Resultado.setText(str(Res)+'c')
-
+    try:
+        Cadena=str(Qle_Funcion.text())
+        x=sp.Symbol('x')
+        Res=sp.integrate(Cadena,x)
+        Lbl_Resultado.setText(str(Res)+' +c')
+    except:
+        Lbl_Resultado.setText('Funcion invalida')
+def Limpiar():
+    Qle_Funcion.setText('Aqui va la funcion a derivar o integrar')
+    Lbl_Resultado.setText('Resultado')
 
 def Mostrar():
     Ventana2.setVisible(True)
@@ -39,9 +46,8 @@ def Completar_Layouts():
     Layout1.addWidget(Qle_Funcion,1,1)
     Layout1.addWidget(Btn_derivar,2,0)
     Layout1.addWidget(Btn_integrar,2,1)
-    Layout1.addWidget(Btn_Graficar,2,2)
+    Layout1.addWidget(Btn_Limpiar,2,2)
     Layout1.addWidget(Lbl_Resultado,3,1)
-    Layout1.addWidget(Lbl_Grafica,4,1)
     Layout1.addWidget(Btn_ayuda,0,2)
     Layout2.addWidget(Lbl_ayuda,0,0)
     Layout2.addWidget(Btn_ocultar,1,0)
@@ -49,6 +55,7 @@ def Completar_Layouts():
     Btn_ocultar.clicked.connect(Ocultar)
     Btn_derivar.clicked.connect(Derivar)
     Btn_integrar.clicked.connect(Integrar)
+    Btn_Limpiar.clicked.connect(Limpiar)
 
 
 
@@ -66,18 +73,23 @@ def main():
     Btn_derivar=graficos.QPushButton('Derivar funcion')
     global Btn_integrar
     Btn_integrar=graficos.QPushButton('Integrar funcion')
-    global Btn_Graficar
-    Btn_Graficar=graficos.QPushButton('Graficar')
+    global Btn_Limpiar
+    Btn_Limpiar=graficos.QPushButton('Limpiar')
     global Btn_ayuda
     Btn_ayuda=graficos.QPushButton('?')
     global Btn_ocultar
     Btn_ocultar=graficos.QPushButton('Cerrar')
     global Qle_Funcion
     Qle_Funcion=graficos.QLineEdit('Aqui va la funcion')
-    global Lbl_Grafica
-    Lbl_Grafica=graficos.QLabel('Grafica de la funcion')
     global Lbl_ayuda
-    Lbl_ayuda=graficos.QLabel('Aqui van las indicaciones de com colocar datos')
+    Lbl_ayuda=graficos.QLabel('La derivada esta dada con repecto a x'+
+                                '\nLas funciones aceptadas son:'+
+                                '\nfuncion\tescritura'+
+                                '\ncos(x)\tcos(x)\nsen(x)\tsin(x)\ntan(x)\ttan(x)\nsec(x)\tsec(x)\ncsc(x)\tcsc(x)\nctg(x)\tcot(x)'+
+                                '\ncosh(x)\tcosh(x)\nsenh(x)\tsinh(x)\ntanh(x)\ttanh(x)\nsech(x)\tsech(x)\ncsch(x)\tcsch(x)\nctgh(x)\tcoth(x)\n'+
+                                'Faltan las inversas\n'+
+                                'e^x\texp(x)\nlog(x)\tlog(x) ó ln(x)\n x^n\tx**n\nnx\tn*x\n √x\tsqrt(x)\n'+
+                                'En caso de que obtenga como resultado Integrate(F(x))), indica que su derivada o integral no puede ser computada por este software')
     global Lbl_Resultado
     Lbl_Resultado=graficos.QLabel('Funcion resultante')
     Completar_Layouts()
