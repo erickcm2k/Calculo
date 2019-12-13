@@ -4,7 +4,9 @@ Sencillo programa hecho como proyecto para la materia de Cálculo I, impartida e
 
 ## Construido con 🛠️
 [Python](https://www.python.org/) - Lenguaje usado
+
 [PyQt5](https://pypi.org/project/PyQt5/) - Librería usada para el entorno gráfico
+
 [SymPy](https://www.sympy.org/en/index.html) - Librería usada para realizar los cálculos
 
 **Requisitos previos:**
