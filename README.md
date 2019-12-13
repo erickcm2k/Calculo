@@ -15,4 +15,3 @@ pip3 --version
 sudo pip3 install numpy
 sudo pip3 install sympy
 sudo pip3 install scipy
-´´´
