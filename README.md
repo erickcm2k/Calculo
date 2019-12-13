@@ -2,6 +2,9 @@
 
 Sencillo programa hecho como proyecto para la materia de Cálculo I, impartida en ESCOM que recibe una función y calcula su derivada e integral
 
+## Construido con 🛠️
+[Python]
+
 **Requisitos previos:**
 
 Instalar sympy
