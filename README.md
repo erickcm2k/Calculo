@@ -10,13 +10,9 @@ Sencillo programa hecho como proyecto para la materia de Cálculo I, impartida e
 **Requisitos previos:**
 
 ```
-$ sudo apt install python3-pip
-
+sudo apt install python3-pip
 pip3 --version
-
 sudo pip3 install numpy
-
 sudo pip3 install sympy
-
 sudo pip3 install scipy
 ´´´
