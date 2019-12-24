@@ -2,6 +2,7 @@ import subprocess, sys
 import webbrowser
 import PyQt5.QtWidgets as graficos
 import sympy as sp
+import os
 global Layout1
 global Layout2
 global Btn_derivar
@@ -16,18 +17,18 @@ global Ventana2
 
 def Derivar():
     try:
-        Cadena=str(Qle_Funcion.text())
-        x=sp.Symbol('x')
-        Res=sp.diff(Cadena,x)
+        Cadena = str(Qle_Funcion.text())
+        x = sp.Symbol('x')
+        Res = sp.diff(Cadena,x)
         Lbl_Resultado.setText(str(Res))
     except:
         Lbl_Resultado.setText('Funcion invalida')
 
 def Integrar():
     try:
-        Cadena=str(Qle_Funcion.text())
-        x=sp.Symbol('x')
-        Res=sp.integrate(Cadena,x)
+        Cadena = str(Qle_Funcion.text())
+        x = sp.Symbol('x')
+        Res = sp.integrate(Cadena,x)
         Lbl_Resultado.setText(str(Res)+' +c')
     except:
         Lbl_Resultado.setText('Funcion invalida')
@@ -40,13 +41,18 @@ def AbrirAyuda():
         if sys.platform == 'linux':
             #Linux detectado
             subprocess.call(["xdg-open", "ayuda.pdf"])
+            
         elif sys.platform == 'darwin':
             #MacOSx detectado
-            subprocess.call(["open", "ayuda.pdf"])
+            try:
+                subprocess.call(["open", "ayuda.pdf"])
+            except:
+                print("resulto esto")
+                Ventana2.setVisible(True)
+
         elif sys.platform.startswith('win'):
             #Windows detectado
             try:
-                import os
                 os.startfile("ayuda.pdf")
             except:
                 print("resulto esto")
@@ -82,30 +88,29 @@ def Completar_Layouts():
 
 
 
-"""En esta parte aunque parezca confus estoy dadole un valor definitivo a los elementos de el entorno grafico"""
 def main():
-    App=graficos.QApplication([])
-    Ventana1=graficos.QWidget()
+    App = graficos.QApplication([])
+    Ventana1 = graficos.QWidget()
     global Ventana2
-    Ventana2=graficos.QWidget()
+    Ventana2 = graficos.QWidget()
     global Layout1
-    Layout1=graficos.QGridLayout()
+    Layout1 = graficos.QGridLayout()
     global Layout2
-    Layout2=graficos.QGridLayout()
+    Layout2 = graficos.QGridLayout()
     global Btn_derivar
-    Btn_derivar=graficos.QPushButton('Derivar funcion')
+    Btn_derivar = graficos.QPushButton('Derivar funcion')
     global Btn_integrar
-    Btn_integrar=graficos.QPushButton('Integrar funcion')
+    Btn_integrar = graficos.QPushButton('Integrar funcion')
     global Btn_Limpiar
-    Btn_Limpiar=graficos.QPushButton('Borrar')
+    Btn_Limpiar = graficos.QPushButton('Borrar')
     global Btn_ayuda
-    Btn_ayuda=graficos.QPushButton('?')
+    Btn_ayuda = graficos.QPushButton('?')
     global Btn_ocultar
-    Btn_ocultar=graficos.QPushButton('Cerrar')
+    Btn_ocultar = graficos.QPushButton('Cerrar')
     global Qle_Funcion
-    Qle_Funcion=graficos.QLineEdit('')
+    Qle_Funcion = graficos.QLineEdit('')
     global Lbl_ayuda
-    Lbl_ayuda=graficos.QLabel('\n\t\t¿Cómo ingresar datos a la calculadora?\n'+
+    Lbl_ayuda = graficos.QLabel('\n\t\t¿Cómo ingresar datos a la calculadora?\n'+
                                 '\n\t\tLas funciones aceptadas son:\n'+
                                 '\nForma Convencional:\tForma que puede entender la calculadora:'+
                                 '\ncoseno\tcos(x)\nseno\tsin(x)\ntangente\ttan(x)\nsecante\tsec(x)\ncosecante\tcsc(x)\ncotangente\tcot(x)'+
@@ -115,7 +120,7 @@ def main():
                                 'Un ejemplo de esto es:\texp(cos(x)**4)\n'+
                                 'En caso de que obtenga como resultado Integrate(F(x))), indica que su derivada o \nintegral no puede ser computada por este software')
     global Lbl_Resultado
-    Lbl_Resultado=graficos.QLabel('Funcion resultante')
+    Lbl_Resultado = graficos.QLabel('Funcion resultante')
     Completar_Layouts()
     Ventana2.setLayout(Layout2)
     Ventana1.setLayout(Layout1)
